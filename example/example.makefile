@@ -3,27 +3,34 @@
 ### and rename it to makefile.
 ##
 
+##
 # Application name
+##
 APPL ?= example_tmpl
 
-# Optimization Level
-# Please Refer to toolchain_xxx.mk for this option
+##
+# Extended device list
+##
+EXT_DEV_LIST +=
+
+# Optimization level
+# Please refer to toolchain_xxx.mk for this option
 OLEVEL ?= O2
 
 ##
-# Current Board And Core
+# Current board and core
 ##
 BOARD ?= emsk
 BD_VER ?= 22
 CUR_CORE ?= arcem7d
 
 ##
-# select debugging jtag
+# Debugging JTAG
 ##
 JTAG ?= usb
 
 ##
-# Set toolchain
+# Toolchain
 ##
 TOOLCHAIN ?= mw
 
@@ -44,27 +51,38 @@ TOOLCHAIN ?= mw
 ##
 #APPL_LIBS ?=
 
-#
-# root dir of embARC
-#
+##
+# Root path of embARC
+##
 EMBARC_ROOT = ../../..
 
+##
+# Middleware
+##
 MID_SEL = common
 
-# application source dirs
+##
+# Application source path
+##
 APPL_CSRC_DIR = .
 APPL_ASMSRC_DIR = .
 
-# application include dirs
+##
+# Application include path
+##
 APPL_INC_DIR = .
 
-# application defines
+##
+# Application defines
+##
 APPL_DEFINES =
 
-# include current project makefile
+##
+# Include current project makefile
+##
 COMMON_COMPILE_PREREQUISITES += makefile
 
 ### Options above must be added before include options.mk ###
-# include key embARC build system makefile
+# Include key embARC build system makefile
 override EMBARC_ROOT := $(strip $(subst \,/,$(EMBARC_ROOT)))
 include $(EMBARC_ROOT)/options/options.mk
